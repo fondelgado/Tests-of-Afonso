@@ -1,0 +1,22 @@
+window.mhieShortVideoIds = new Set([
+  "WM8fAIJMeEc", "mnR0VtQ4GjM", "mnrDGSgB_bU", "ILdf1p5rTcQ", "9R6Yae3oaes", "iu7s7eKqM64", "XLFIXQF9wcA", "JFk5e2lr6Cs", "OA8lUKzsemY", "bVb2fjDGch4", "C0Blz4cxiYA", "Nm8YKvKK1hM",
+  "kZFbJS3_Q0E", "_mrNIvo8UyQ", "ZAnybXuOagw", "DosA7O5I-PM", "0ed6Mld6ER4", "5oFnRcSEjlg", "bCRVEzAQs6w", "2h8xdz-O_Bs", "EGw4JOuOuPQ", "AI2rJy4w_7s", "SBF5BRvnICc", "jS1Vj-Lwz8U",
+  "_B5so664t_4", "aCLtFcdZsuk", "PknkhB9RGsU", "aBA_oU8M5K0", "QjXCdbw7Cjc", "b_dFBMEZOOA", "EIGeK0l7mj8", "LT-HBmREiqo", "yOFxO__45NU", "1UClCGWAwq0", "-0zSikmFBA0", "DTgoKP-IX0I",
+  "EJI8rapHFvI", "Wnd2h2wzimc", "99zNQVRwIJE", "WuBRqQ_GcGE", "RiM05uW9DxE", "FicD7pLcT54", "Wxx3bGwm0wM", "oJTjSEO0YTo", "d1dr7rouROc", "-HDLsm3743w", "a_R-1L5eOoU", "qDPLGWFva1o",
+  "480rzaKClk4", "7d8NtgHNj_U", "2cDT8WvgUi8", "Qv6RiSioZqk", "lN7Mw5jFyis", "hijlOLaZ0BY", "9KnXFnYI92M", "VZphSygcqms", "uxeuswpUeVE", "VMB8LB6A34E", "zSUafcDT5CQ", "NjAByLjWoqg",
+  "cAfGn4FdYmQ", "M8UlKk7T2LI", "aJPBgnh5G50", "aUNHvmjTBOU", "x8SZaIE6ggk", "UzAuqeU-Jks", "GDxj_9tidio", "iQ0hL4vJNU0", "HqefDJG4FMQ", "EoJFdq5Lbj4", "WxZ3LM-rSSs", "gHG5mp71MsY",
+  "JlG54_hpGwU", "hlOHjj4RQ1g", "-kMVNThJm0w", "GkgQb3Z3mxo", "ErRf2a3al2o", "3psFEdjgL-E", "MqsmW6UMmIA", "uBmICCQsHQE", "mw_FXT--Q6Q", "q2prunwWOOQ", "cmwbWqSlcOg", "TtZuMjYYobo",
+  "F_D7RRufTWQ", "d9847ddvjLU", "ikm3GVJldoM", "vrFaKj3nJ9I", "dEiahKkQUwY", "xAqDvl5Wr8Y", "l6O_RHeWMDE", "crPt8Wm1w34", "Z3H-B2oWgHk", "nsL_OCDbHkE", "hESOuF9tWoc", "U34vlaQAc4Q",
+  "M7QO69Qxt40", "4L4y2nlkeC8", "1AHI0oBEU5M", "2uGNAne69W8", "8GopYvzcAGk", "7mdKKCoZQJ0", "DUAX7F03y-o", "xmo2pvjogNQ", "atIYWkmNZ1Y", "up12YLk93Gk", "IxILdLlN5Ow", "DBNvzR779SA",
+  "CQ5Tixj1JvA", "IhCJndrAas8", "T7J7jzJuoSs", "5hIyXg-__WE", "fTkNix9jIIM", "z50zUHHY61c", "VkXEw_Vm04w", "UJc6g9LRQfM", "pKgCjA-MRlk", "8D7nt5EuiK0", "f0adXq2eH7I", "ursfbri5__Q",
+  "suuw3HADOLE", "TjYtGzRaAw8", "4jNY12jvhDI", "EvWzaF32NMs", "YkMmqNQtMSw", "_pBIlPIwp80", "TTphEUZ42IE", "5hgHjQ9VgTU", "ncpArdBtOsU", "n9wHpqBab7A", "42LoR7l3QFQ", "cbP6K9k-gdY",
+  "a83HtTSgg00", "qH89Jz4s5iE", "a1DkWhEvaH0", "s7tjOUZhfqA", "JUVcdnd7k5Y", "2q67ll1XWUA", "93VZ2kWf8RM", "R9JpycbdUGc", "XLacNArLhy4", "Zd63qxHpuhU", "o8_NFYsfcSA", "yae9sT7JKDg",
+  "Ppz_IVrv1HM", "6QAfj99_ovc", "70I2fBf188I", "yQPUTLY8kqA", "JpuaSShNg_8", "mhRKs5CEReQ", "xoyhE11FRXQ", "RRdep4AT0TA", "FyKxA5maPv4", "1onBIm-v4FU", "BCi1UglSyig", "00EsjqLUxiw",
+  "X7x8q41zW-I", "N2iNV9OTRnk", "oYTSs32D0bY", "4aQ3iQN8VhI", "clzyl5e3i4s", "tBbemJ0m6zQ", "oRH8HzXIZHk", "7Poslk1cNiM", "mBqENjE0rGQ", "6A73yTUblQ0", "rxe7D763rfE", "NdFOcTPPoeA",
+  "XZ6-PSEpefM", "P6lAo7wcBTA", "91KNTgYeSVo", "Ig2lL1gsXBw", "ySpNYfL6vW8", "Z5shiLfZfxY", "BNy8PohuQ-A", "xtLoRWegpGU", "_Q6H_tin9P4", "RE0RZkhDQS0", "I7As0kfXXJw", "F1K-c1tewMM",
+  "PVDkG3earnQ", "hVBxlUzFg9o", "fiWf9OjgNkE", "DhAnWObdxK0", "VOYFEH3Bo6E", "2O7BRgxTVpg", "QcfxPVF7T-k", "R2lkLN9Gxbs", "kyhGVYZRDZs", "YghXs_KNJ0k", "cG5sK6e6-jk", "SXChWASCpYM",
+  "xUKoYv3OtCU", "2yycAkLyanQ", "mU_6qr3Ncu0", "Mp3QBZifAz4", "5_i7hJIETVE", "tottSr_MknA", "zdpf0QckHiA", "EVzLnBo1AHc", "TqvIuTEQ7-g", "7InPvBj5unM", "oDjfswOHbSc", "abWGEZwZTY8",
+  "2UBEkL5qILY", "ZbOov-fnNyg", "ZqIxz-nYPh0", "FZkS6G7rgNs", "vn4QrUtK_fI", "6MZq8GP4u-0", "fnP6uSdFrN4", "VAJxEqlz3cw", "P7GVO3rRaVs", "wAdPRpHK58Q", "brIJUi9IgPk", "4gNtRL9BhUI",
+  "Egz0qMSYuJw", "WQPLQ4V2pkk", "zSNnQILHeoU", "zHqKolXlBMI", "cK_GD-EqI2g", "RfkDaiohgmk", "74tOSKfcre0", "k1iKfa_m0Es", "xGsDwmDYJ2E", "0f1JGc7KocI", "jnRgptp6kEE", "qpQEinFI8_E",
+  "0CpJmFmXuh0", "3U02zA0MWI4", "roQnjK2PIy8", "jhXPIxpjKqc"
+]);
