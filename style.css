@@ -238,6 +238,7 @@ h1 em, h2 em { color: var(--coral); font-style: normal; }
 .comment-list { margin-bottom: 36px; }
 .comment { padding: 18px 0; border-top: 1px solid var(--line); }
 .comment:last-child { border-bottom: 1px solid var(--line); }
+.comment-reply { margin: 14px 0 0 24px; padding: 12px 0 0 16px; border-top: 1px solid var(--line); border-left: 2px solid var(--coral); }
 .comment-meta { display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--coral); font: 0.67rem "DM Mono", monospace; text-transform: uppercase; }
 .comment p { max-width: 500px; margin: 0; font-size: 0.9rem; line-height: 1.5; }
 .comment-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; padding: 24px; background: var(--paper); }

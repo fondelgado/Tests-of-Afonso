@@ -454,11 +454,13 @@ async function getYouTubeComments(videoId) {
 
   const request = (async () => {
     const comments = [];
-    const appendComment = (comment) => {
+    const appendComment = (comment, parentId = null) => {
       const snippet = comment.snippet;
       if (!snippet) return;
 
       comments.push({
+        id: comment.id,
+        parentId,
         name: snippet.authorDisplayName || "YouTube user",
         message: snippet.textOriginal || snippet.textDisplay || "",
         date: snippet.publishedAt
@@ -496,7 +498,7 @@ async function getYouTubeComments(videoId) {
           if (replyPageToken) replyParams.pageToken = replyPageToken;
 
           const replyPage = await fetchYouTubeApi("comments", replyParams);
-          (replyPage.items || []).forEach(appendComment);
+          (replyPage.items || []).forEach((reply) => appendComment(reply, topLevelComment.id));
           replyPageToken = replyPage.nextPageToken || "";
         } while (replyPageToken);
       }
@@ -539,22 +541,42 @@ function getLocalComments(videoId = null) {
 function renderComments(comments) {
   commentList.innerHTML = "";
 
+  const commentsById = new Map(comments.filter((comment) => comment.id).map((comment) => [comment.id, comment]));
+  const repliesByParent = new Map();
+  const topLevelComments = [];
+
   comments.forEach((comment) => {
+    if (comment.parentId && commentsById.has(comment.parentId)) {
+      if (!repliesByParent.has(comment.parentId)) repliesByParent.set(comment.parentId, []);
+      repliesByParent.get(comment.parentId).push(comment);
+    } else {
+      topLevelComments.push(comment);
+    }
+  });
+
+  const createCommentElement = (comment, isReply = false) => {
     const item = document.createElement("article");
-    item.className = "comment";
+    item.className = isReply ? "comment comment-reply" : "comment";
 
     const meta = document.createElement("div");
     meta.className = "comment-meta";
     const author = document.createElement("span");
     author.textContent = comment.name || "listener";
     const source = document.createElement("span");
-    source.textContent = [comment.source || "archive", comment.date].filter(Boolean).join(" · ");
+    source.textContent = [isReply ? "reply" : null, comment.source || "archive", comment.date].filter(Boolean).join(" · ");
     meta.append(author, source);
 
     const message = document.createElement("p");
     message.textContent = comment.message || comment.text || "";
 
     item.append(meta, message);
+    return item;
+  };
+
+  topLevelComments.forEach((comment) => {
+    const item = createCommentElement(comment);
+    const replies = (repliesByParent.get(comment.id) || []).sort((first, second) => first.timestamp - second.timestamp);
+    replies.forEach((reply) => item.append(createCommentElement(reply, true)));
     commentList.append(item);
   });
 }
