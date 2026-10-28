@@ -11,7 +11,7 @@ const knownShortVideoIds = window.mhieShortVideoIds || new Set();
 const existingCatalogVideoIds = new Set((window.mhieMusicData || []).map(({ id }) => id));
 const shortTitlePattern = /shorts|#short|#fyp|#dreamcore|#halloween|#nostalgia|#scary|#ambient|#creepy/i;
 
-const ARCHIVE_REFRESH_INTERVAL = 10 * 24 * 60 * 60 * 1000;
+const ARCHIVE_REFRESH_INTERVAL = 24 * 60 * 60 * 1000;
 const ARCHIVE_REFRESH_STORAGE_KEY = "mhie-youtube-last-refresh-v3";
 const ARCHIVE_CATALOG_STORAGE_KEY = "mhie-youtube-catalog-with-dates-v1";
 const YOUTUBE_API_KEYS = [
@@ -57,6 +57,7 @@ function readCachedCatalog() {
 }
 
 window.mhieMusicData = readCachedCatalog();
+window.mhieSpotifyCatalog = Array.isArray(window.mhieSpotifyCatalog) ? window.mhieSpotifyCatalog : [];
 let musicData = buildMusicData(window.mhieMusicData);
 let shortsData = buildShortsData(musicData);
 
@@ -283,6 +284,45 @@ function renderPlaylists() {
 
     link.append(cover, content, arrow);
     playlistList.append(link);
+  });
+}
+
+function renderSpotifyCatalog() {
+  const container = document.querySelector("#spotify-list");
+  if (!container) return;
+
+  const catalog = Array.isArray(window.mhieSpotifyCatalog) ? window.mhieSpotifyCatalog : [];
+  container.innerHTML = "";
+
+  if (!catalog.length) {
+    const empty = document.createElement("p");
+    empty.className = "form-note";
+    empty.textContent = "Spotify catalog loading...";
+    container.append(empty);
+    return;
+  }
+
+  catalog.slice(0, 8).forEach((album) => {
+    const card = document.createElement("a");
+    card.className = "spotify-card";
+    card.href = album.url || "#";
+    card.target = "_blank";
+    card.rel = "noreferrer";
+
+    const cover = document.createElement("img");
+    cover.className = "spotify-cover";
+    cover.src = album.image || "";
+    cover.alt = album.name;
+
+    const meta = document.createElement("div");
+    meta.className = "spotify-meta";
+    meta.innerHTML = `
+      <h3>${escapeHtml(album.name)}</h3>
+      <span>${escapeHtml(album.type || "album")} · ${escapeHtml(album.releaseDate || "release")}</span>
+    `;
+
+    card.append(cover, meta);
+    container.append(card);
   });
 }
 
@@ -690,6 +730,7 @@ renderShorts();
 loadComments();
 renderPlaylists();
 renderReleases();
+renderSpotifyCatalog();
 startArchiveRefreshSchedule();
 
 trackSearch.addEventListener("input", (event) => {
