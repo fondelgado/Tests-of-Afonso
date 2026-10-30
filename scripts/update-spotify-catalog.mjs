@@ -10,7 +10,7 @@ function base64(value) {
 
 export async function getSpotifyToken(clientId, clientSecret, fetchImpl = fetch) {
   if (!clientId || !clientSecret) {
-    throw new Error("SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET are required.");
+    throw new Error("SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET are required. Add both to GitHub Actions secrets and rerun the workflow.");
   }
 
   const response = await fetchImpl("https://accounts.spotify.com/api/token", {
@@ -76,6 +76,11 @@ async function main() {
   const clientId = process.env.SPOTIFY_CLIENT_ID;
   const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
   const artistId = process.env.SPOTIFY_ARTIST_ID || defaultArtistId;
+
+  if (!clientId || !clientSecret) {
+    throw new Error("Missing SPOTIFY_CLIENT_ID or SPOTIFY_CLIENT_SECRET. Add both in the repository secrets before running the workflow.");
+  }
+
   const catalog = await fetchSpotifyCatalog({ artistId, clientId, clientSecret });
   const outputPath = resolve(fileURLToPath(new URL("../spotify-data.js", import.meta.url)));
   await writeFile(outputPath, renderSpotifyCatalog(catalog));
